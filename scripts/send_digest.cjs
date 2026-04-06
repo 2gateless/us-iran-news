@@ -1,6 +1,7 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const RSSParser = require('rss-parser');
 const nodemailer = require('nodemailer');
+const path = require('path');
 require('dotenv').config();
 
 const parser = new RSSParser({
@@ -114,10 +115,8 @@ function getCategoryColor(category) {
 }
 
 async function sendEmail(htmlBody) {
-  const recipientList = [...new Set(
-    (process.env.RECIPIENT_EMAILS || '2gateless@gmail.com')
-      .split(',').map(e => e.trim()).filter(e => e)
-  )];
+  const recipientsFile = path.join(__dirname, '..', 'recipients.json');
+  const recipientList = [...new Set(require(recipientsFile).filter(e => e && e.trim()))];
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',

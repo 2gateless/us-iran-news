@@ -27,5 +27,4 @@ jobs:
         env:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           GMAIL_APP_PASS: ${{ secrets.GMAIL_APP_PASS }}
-          RECIPIENT_EMAILS: ${{ secrets.RECIPIENT_EMAILS }}
         run: node scripts/send_digest.cjs
