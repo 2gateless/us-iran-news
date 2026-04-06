@@ -114,8 +114,10 @@ function getCategoryColor(category) {
 }
 
 async function sendEmail(htmlBody) {
-  const recipientList = (process.env.RECIPIENT_EMAILS || '2gateless@gmail.com')
-    .split(',').map(e => e.trim()).filter(e => e);
+  const recipientList = [...new Set(
+    (process.env.RECIPIENT_EMAILS || '2gateless@gmail.com')
+      .split(',').map(e => e.trim()).filter(e => e)
+  )];
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
