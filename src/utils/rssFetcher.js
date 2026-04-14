@@ -4,16 +4,13 @@ const parser = new RSSParser();
 const PROXY_URL = 'https://api.allorigins.win/raw?url=';
 
 const NEWS_SOURCES = [
-  { id: 'nyt', name: 'New York Times', url: 'https://rss.nytimes.com/services/xml/rss/nyt/World.xml', category: 'west' },
   { id: 'wp', name: 'Washington Post', url: 'https://feeds.washingtonpost.com/rss/world', category: 'west' },
-  { id: 'wsj', name: 'Wall Street Journal', url: 'https://feeds.a.dj.com/rss/RSSWorldNews.xml', category: 'west' },
-  { id: 'ft', name: 'Financial Times', url: 'https://www.ft.com/world?format=rss', category: 'west' },
-  { id: 'economist', name: 'The Economist', url: 'https://www.economist.com/international/rss.xml', category: 'neutral' },
-  { id: 'presstv', name: 'Press TV', url: 'https://www.presstv.ir/Default/RSS/12', category: 'pro-iran' },
+  { id: 'tehrantimes', name: 'Tehran Times', url: 'https://www.tehrantimes.com/rss', category: 'pro-iran' },
   { id: 'iranintl', name: 'Iran International', url: 'https://www.iranintl.com/en/rss', category: 'anti-iran' },
-  { id: 'xinhua', name: 'Xinhua', url: 'http://www.xinhuanet.com/english/rss/worldrss.xml', category: 'neutral' },
-  { id: 'rt', name: 'RT News', url: 'https://www.rt.com/rss/news/', category: 'neutral' },
-  { id: 'aljazeera', name: 'Al Jazeera', url: 'https://www.aljazeera.com/xml/rss/all.xml', category: 'neutral' }
+  { id: 'jpost', name: 'The Jerusalem Post', url: 'https://www.jpost.com/Rss/RssFeedsHeadlines.aspx', category: 'anti-iran' },
+  { id: 'timesofisrael', name: 'The Times of Israel', url: 'https://www.timesofisrael.com/feed/', category: 'anti-iran' },
+  { id: 'tass', name: 'TASS', url: 'https://tass.com/rss/v2.xml', category: 'neutral' },
+  { id: 'lemonde', name: 'Le Monde', url: 'https://www.lemonde.fr/rss/une.xml', category: 'west' }
 ];
 
 export const fetchAllNews = async () => {
