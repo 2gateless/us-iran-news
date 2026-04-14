@@ -12,14 +12,13 @@ const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
 const MODEL_NAME = "gemini-2.5-flash"; // 현재 가용한 최신 모델
 
 const NEWS_SOURCES = [
-  { name: 'NYT', url: 'https://rss.nytimes.com/services/xml/rss/nyt/World.xml', category: 'west' },
-  { name: 'WSJ', url: 'https://feeds.a.dj.com/rss/RSSWorldNews.xml', category: 'west' },
-  { name: 'Washington Post', url: 'https://feeds.washingtonpost.com/rss/world', category: 'west' },
-  { name: 'The Economist', url: 'https://www.economist.com/international/rss.xml', category: 'neutral' },
-  { name: 'Al Jazeera', url: 'https://www.aljazeera.com/xml/rss/all.xml', category: 'neutral' },
-  { name: 'TASS', url: 'https://tass.com/rss/v2.xml', category: 'neutral' },
-  { name: 'RT News', url: 'https://www.rt.com/rss/news/', category: 'neutral' },
-  { name: 'CNN World', url: 'http://rss.cnn.com/rss/edition_world.rss', category: 'west' }
+  { id: 'wp', name: 'Washington Post', url: 'https://feeds.washingtonpost.com/rss/world', category: 'west' },
+  { id: 'tehrantimes', name: 'Tehran Times', url: 'https://www.tehrantimes.com/rss', category: 'pro-iran' },
+  { id: 'iranintl', name: 'Iran International', url: 'https://www.iranintl.com/en/rss', category: 'anti-iran' },
+  { id: 'jpost', name: 'The Jerusalem Post', url: 'https://www.jpost.com/Rss/RssFeedsHeadlines.aspx', category: 'anti-iran' },
+  { id: 'timesofisrael', name: 'The Times of Israel', url: 'https://www.timesofisrael.com/feed/', category: 'anti-iran' },
+  { id: 'tass', name: 'TASS', url: 'https://tass.com/rss/v2.xml', category: 'neutral' },
+  { id: 'lemonde', name: 'Le Monde', url: 'https://www.lemonde.fr/rss/une.xml', category: 'west' }
 ];
 
 async function generateDigest() {
